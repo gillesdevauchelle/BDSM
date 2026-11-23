@@ -1,5 +1,263 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="utf-8"><title>Mon projet</title></head>
-<body><h1>Mon projet</h1></body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les bateaux de St Mandrier</title>
+<meta name="description" content="Les bateaux de St Mandrier : Sillage 4, Lombarde 5.5 et Makaire 8.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nuit:#1b1550;
+  --violet:#3b2a8f;
+  --bleu:#2347a8;
+  --ciel:#8fd3ff;
+  --blanc:#ffffff;
+  --voile:rgba(255,255,255,.72);
+  --titre:"Bricolage Grotesque",system-ui,sans-serif;
+  --texte:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  font-family:var(--texte);
+  color:var(--blanc);
+  line-height:1.65;
+  background:linear-gradient(180deg,var(--nuit) 0%,var(--violet) 38%,var(--bleu) 72%,#1a3a8a 100%);
+  background-attachment:fixed;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ciel);outline-offset:4px;border-radius:999px}
+
+/* menu */
+header{
+  position:fixed;top:14px;left:0;right:0;z-index:10;
+  display:flex;justify-content:center;padding:0 14px;
+}
+nav{
+  display:flex;gap:4px;flex-wrap:wrap;justify-content:center;
+  padding:6px;border-radius:999px;
+  background:rgba(27,21,80,.55);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+nav a{
+  color:var(--ciel);font-weight:500;font-size:.95rem;
+  padding:8px 18px;border-radius:999px;transition:background .2s,color .2s;
+}
+nav a:hover{background:var(--ciel);color:var(--nuit)}
+
+/* accueil */
+.accueil{
+  min-height:100vh;display:grid;place-items:center;text-align:center;
+  padding:120px 24px 140px;position:relative;
+}
+.accueil img{
+  width:min(560px,86vw);height:auto;
+  filter:invert(1);mix-blend-mode:screen;
+}
+.accueil p{
+  margin-top:10px;font-size:1.2rem;color:var(--voile);max-width:30ch;margin-inline:auto;
+}
+.vague{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px;display:block}
+.vague path{fill:rgba(255,255,255,.07)}
+.vague path.b{fill:rgba(143,211,255,.10)}
+
+/* bateaux */
+.bateau{
+  max-width:1000px;margin:0 auto;padding:110px 28px;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;
+}
+.bateau:nth-of-type(even){grid-template-columns:1fr 1.1fr}
+.bateau:nth-of-type(even) .dessin{order:2}
+.dessin{
+  aspect-ratio:1/1;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,rgba(143,211,255,.22),rgba(143,211,255,.04) 70%);
+  display:grid;place-items:center;padding:12%;
+}
+.dessin svg{width:100%;height:auto;overflow:visible}
+.dessin path,.dessin line{
+  fill:none;stroke:var(--ciel);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+.type{color:var(--ciel);font-weight:500;margin-bottom:6px}
+h2{
+  font-family:var(--titre);font-weight:800;
+  font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;letter-spacing:-.02em;
+  margin-bottom:22px;
+}
+.bateau p{color:var(--voile);max-width:44ch}
+.fiche{
+  margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;
+}
+.fiche span{
+  padding:8px 18px;border-radius:999px;font-size:.95rem;
+  background:rgba(255,255,255,.1);
+}
+.fiche b{font-weight:600;color:var(--ciel);margin-right:6px}
+
+/* comparaison */
+.echelle{max-width:900px;margin:0 auto;padding:60px 28px 110px;text-align:center}
+.echelle h3{font-family:var(--titre);font-weight:600;font-size:1.8rem;margin-bottom:8px}
+.echelle p{color:var(--voile);margin-bottom:44px}
+.echelle svg{width:100%;height:auto}
+.echelle path,.echelle line{
+  fill:none;stroke:var(--ciel);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+.echelle text{fill:var(--blanc);font-family:var(--texte);font-size:15px}
+.echelle text.m{fill:var(--ciel)}
+
+/* contact */
+.contact{
+  text-align:center;padding:110px 24px 70px;
+  background:radial-gradient(ellipse at 50% 0%,rgba(143,211,255,.16),transparent 65%);
+}
+.contact h3{font-family:var(--titre);font-weight:800;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:14px}
+.contact p{color:var(--voile);max-width:40ch;margin:0 auto 34px}
+.bouton{
+  display:inline-block;background:var(--ciel);color:var(--nuit);
+  font-weight:600;padding:15px 34px;border-radius:999px;transition:transform .2s;
+}
+.bouton:hover{transform:translateY(-2px)}
+.coord{margin-top:30px;color:var(--voile);font-size:.98rem}
+footer{text-align:center;padding:30px 24px 50px;color:rgba(255,255,255,.5);font-size:.9rem}
+
+@media(max-width:760px){
+  .bateau,.bateau:nth-of-type(even){grid-template-columns:1fr;gap:32px;padding:70px 24px}
+  .bateau:nth-of-type(even) .dessin{order:0}
+  .dessin{max-width:320px;margin:0 auto;width:100%}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav aria-label="Menu principal">
+    <a href="#accueil">Accueil</a>
+    <a href="#sillage">Sillage 4</a>
+    <a href="#lombarde">Lombarde 5.5</a>
+    <a href="#makaire">Makaire 8</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="accueil" id="accueil">
+  <div>
+    <!-- Ajoute ton logo dans le dépôt sous le nom logo.png -->
+    <img src="logo.png" alt="BDSM, les bateaux de St Mandrier">
+    <p>Trois bateaux construits à St Mandrier, pour la pêche et la balade.</p>
+  </div>
+  <svg class="vague" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path class="b" d="M0 50 C240 90 480 10 720 45 C960 80 1200 15 1440 50 L1440 90 L0 90 Z"/>
+    <path d="M0 65 C260 30 520 90 780 60 C1040 30 1240 80 1440 62 L1440 90 L0 90 Z"/>
+  </svg>
+</section>
+
+<section class="bateau" id="sillage">
+  <div class="dessin">
+    <svg viewBox="0 0 200 90" aria-hidden="true">
+      <path d="M5 40 L195 28 Q185 70 150 72 L25 72 Q8 66 5 40 Z"/>
+      <line x1="60" y1="46" x2="60" y2="60"/>
+      <line x1="100" y1="44" x2="100" y2="60"/>
+      <line x1="140" y1="42" x2="140" y2="60"/>
+    </svg>
+  </div>
+  <div>
+    <div class="type">Bateau A</div>
+    <h2>Sillage 4</h2>
+    <p>Le plus simple de la gamme et le plus léger. Un bateau de pêche pour le pêcheur assidu, qui sert aussi pour la balade, et qui passe là où l'eau est basse grâce à son très faible tirant d'eau.</p>
+    <div class="fiche">
+      <span><b>Longueur</b>4 m</span>
+      <span><b>Poids</b>250 kg</span>
+      <span><b>Équipement</b>3 banquettes en bois</span>
+      <span><b>Propulsion</b>rame, godille ou petit moteur</span>
+    </div>
+  </div>
+</section>
+
+<section class="bateau" id="lombarde">
+  <div class="dessin">
+    <svg viewBox="0 0 200 90" aria-hidden="true">
+      <path d="M5 42 L195 28 Q185 70 150 72 L25 72 Q8 66 5 42 Z"/>
+      <path d="M95 36 L100 20 L140 20 L148 34"/>
+      <line x1="40" y1="48" x2="40" y2="60"/>
+      <line x1="70" y1="46" x2="70" y2="60"/>
+      <line x1="170" y1="30" x2="170" y2="8"/>
+    </svg>
+  </div>
+  <div>
+    <div class="type">Bateau B</div>
+    <h2>Lombarde 5.5</h2>
+    <p>Pensé pour la promenade en mer, sur un lac, un estuaire ou un canal. Facile à transporter, il offre une cabine pour deux personnes et peut recevoir un coin cuisine. L'arrière accueille deux banquettes et une plate-forme.</p>
+    <div class="fiche">
+      <span><b>Longueur</b>5,50 m</span>
+      <span><b>Poids</b>500 kg</span>
+      <span><b>Cabine</b>2 personnes</span>
+      <span><b>Option</b>moteur hors-bord ou mât</span>
+    </div>
+  </div>
+</section>
+
+<section class="bateau" id="makaire">
+  <div class="dessin">
+    <svg viewBox="0 0 200 90" aria-hidden="true">
+      <path d="M5 44 L195 28 Q186 72 150 74 L25 74 Q8 68 5 44 Z"/>
+      <path d="M60 40 L66 20 L130 20 L142 36"/>
+      <path d="M30 46 L40 34 L58 38"/>
+      <line x1="160" y1="30" x2="160" y2="10"/>
+      <line x1="80" y1="20" x2="80" y2="8"/>
+    </svg>
+  </div>
+  <div>
+    <div class="type">Bateau C</div>
+    <h2>Makaire 8</h2>
+    <p>Le plus grand et le plus confortable. Il est fait pour les sorties en mer ou sur un lac, et pour la pêche au gros. Une cabine à l'avant, une cabine centrale avec cuisine ou coin détente, un poste de pilotage à l'arrière et un solarium sur le toit.</p>
+    <div class="fiche">
+      <span><b>Longueur</b>8 m</span>
+      <span><b>Poids</b>1 300 kg</span>
+      <span><b>Cabines</b>2</span>
+      <span><b>Moteurs</b>jusqu'à deux moteurs puissants</span>
+    </div>
+  </div>
+</section>
+
+<section class="echelle" aria-label="Comparaison des tailles">
+  <h3>Trois tailles, un même chantier</h3>
+  <p>Les bateaux dessinés à la même échelle.</p>
+  <svg viewBox="0 0 440 250" role="img" aria-label="Sillage 4 mesure 4 mètres, Lombarde 5.5 mesure 5,5 mètres, Makaire 8 mesure 8 mètres">
+    <g transform="translate(20,10)">
+      <path d="M0 18 L200 8 Q192 40 160 42 L18 42 Q4 38 0 18 Z"/>
+      <text x="210" y="32">Sillage 4</text><text class="m" x="210" y="50">4 m</text>
+    </g>
+    <g transform="translate(20,90)">
+      <path d="M0 18 L275 6 Q265 40 220 42 L22 42 Q4 38 0 18 Z"/>
+      <path d="M130 14 L140 0 L200 0 L212 12"/>
+      <text x="290" y="30">Lombarde 5.5</text><text class="m" x="290" y="48">5,50 m</text>
+    </g>
+    <g transform="translate(20,170)">
+      <path d="M0 18 L400 4 Q386 44 320 46 L26 46 Q6 40 0 18 Z"/>
+      <path d="M90 14 L100 -4 L260 -4 L280 10"/>
+      <text x="20" y="75" class="m">Makaire 8, 8 m</text>
+    </g>
+  </svg>
+</section>
+
+<section class="contact" id="contact">
+  <h3>Un projet de bateau</h3>
+  <p>Dis-nous ce que tu veux faire sur l'eau, on t'aide à choisir le bon modèle.</p>
+  <a class="bouton" href="mailto:contact@exemple.fr">Nous écrire</a>
+  <div class="coord">St Mandrier sur Mer, Var</div>
+</section>
+
+</main>
+
+<footer>Les bateaux de St Mandrier</footer>
+
+</body>
 </html>
