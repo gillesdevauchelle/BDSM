@@ -71,7 +71,8 @@ nav a:hover{background:var(--ciel);color:var(--nuit)}
   display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;
 }
 .bateau:nth-of-type(even){grid-template-columns:1fr 1.1fr}
-.bateau:nth-of-type(even) .dessin{position:relative;padding:6% 0}
+.bateau:nth-of-type(even) .dessin{order:2}
+.dessin{position:relative;padding:6% 0}
 .dessin::before{
   content:"";position:absolute;inset:0 -6%;border-radius:50%;
   background:radial-gradient(ellipse at 50% 55%,rgba(143,211,255,.22),rgba(143,211,255,0) 68%);
