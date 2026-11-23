@@ -91,8 +91,6 @@ video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre
   padding:110px max(28px,calc((100% - 1000px)/2));
   display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;
 }
-.bateau:nth-of-type(odd){grid-template-columns:1fr 1.1fr}
-.bateau:nth-of-type(odd) .dessin{order:2}
 .bateau:nth-of-type(even){background:var(--sauge-clair)}
 .dessin{position:relative;padding:6% 0}
 .dessin::before{
@@ -143,8 +141,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(244,241,234,.65);font
   .bloc{padding:70px 24px}
   .apropos,.valeurs{grid-template-columns:1fr}
   .galerie{grid-template-columns:1fr 1fr}
-  .bateau,.bateau:nth-of-type(odd){grid-template-columns:1fr;gap:32px;padding:70px 24px}
-  .bateau:nth-of-type(odd) .dessin{order:0}
+  .bateau{grid-template-columns:1fr;gap:32px;padding:70px 24px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
