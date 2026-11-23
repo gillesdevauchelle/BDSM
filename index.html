@@ -10,109 +10,92 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --nuit:#1b1550;
-  --violet:#3b2a8f;
-  --bleu:#2347a8;
-  --ciel:#8fd3ff;
-  --blanc:#ffffff;
-  --voile:rgba(255,255,255,.72);
+  --creme:#f4f1ea;
+  --sauge-clair:#e4e9dc;
+  --sauge:#b7c6a8;
+  --vert:#5f7a61;
+  --brun:#7a6049;
+  --brun-doux:#a38a6e;
+  --encre:#363328;
+  --gris:#6f6d63;
   --titre:"Bricolage Grotesque",system-ui,sans-serif;
   --texte:"Figtree",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{
-  font-family:var(--texte);
-  color:var(--blanc);
-  line-height:1.65;
-  background:linear-gradient(180deg,var(--nuit) 0%,var(--violet) 38%,var(--bleu) 72%,#1a3a8a 100%);
-  background-attachment:fixed;
-  min-height:100vh;
-}
+body{font-family:var(--texte);color:var(--encre);line-height:1.65;background:var(--creme);min-height:100vh}
 a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--ciel);outline-offset:4px;border-radius:999px}
+:focus-visible{outline:2px solid var(--vert);outline-offset:4px;border-radius:999px}
 
 /* menu */
-header{
-  position:fixed;top:14px;left:0;right:0;z-index:10;
-  display:flex;justify-content:center;padding:0 14px;
-}
+header{position:fixed;top:14px;left:0;right:0;z-index:10;display:flex;justify-content:center;padding:0 14px}
 nav{
   display:flex;gap:4px;flex-wrap:wrap;justify-content:center;
   padding:6px;border-radius:999px;
-  background:rgba(27,21,80,.55);
+  background:rgba(244,241,234,.82);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
 }
-nav a{
-  color:var(--ciel);font-weight:500;font-size:.95rem;
-  padding:8px 18px;border-radius:999px;transition:background .2s,color .2s;
-}
-nav a:hover{background:var(--ciel);color:var(--nuit)}
+nav a{color:var(--brun);font-weight:500;font-size:.95rem;padding:8px 18px;border-radius:999px;transition:background .2s,color .2s}
+nav a:hover{background:var(--vert);color:var(--creme)}
 
 /* accueil */
 .accueil{
-  min-height:100vh;display:grid;place-items:center;text-align:center;
-  padding:120px 24px 140px;position:relative;
+  position:relative;min-height:100vh;min-height:100svh;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:18vh 24px 0;
+  background:var(--sauge) url("accueil.jpg") center/cover no-repeat;
 }
-.accueil img{
-  width:min(560px,86vw);height:auto;
-  filter:invert(1);mix-blend-mode:screen;
+.accueil video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% center;z-index:0}
+.accueil::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(54,62,46,.6) 0%,rgba(54,62,46,.22) 34%,rgba(54,62,46,0) 52%,rgba(244,241,234,0) 80%,var(--creme) 100%);
 }
-.accueil p{
-  margin-top:10px;font-size:1.2rem;color:var(--voile);max-width:30ch;margin-inline:auto;
+.accueil .titre{position:relative;z-index:2}
+.accueil h1{
+  font-family:var(--titre);font-weight:800;color:var(--creme);
+  font-size:clamp(2.6rem,7vw,5.6rem);line-height:1;letter-spacing:-.025em;
+  text-shadow:0 2px 30px rgba(40,46,34,.35);
 }
-.vague{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px;display:block}
-.vague path{fill:rgba(255,255,255,.07)}
-.vague path.b{fill:rgba(143,211,255,.10)}
+.accueil p{margin:18px auto 0;font-size:clamp(1.05rem,2vw,1.3rem);color:var(--creme);max-width:32ch;text-shadow:0 1px 18px rgba(40,46,34,.5)}
+@media(prefers-reduced-motion:reduce){.accueil video{display:none}}
 
 /* bateaux */
 .bateau{
-  max-width:1000px;margin:0 auto;padding:110px 28px;
+  padding:110px max(28px,calc((100% - 1000px)/2));
   display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;
 }
 .bateau:nth-of-type(even){grid-template-columns:1fr 1.1fr}
 .bateau:nth-of-type(even) .dessin{order:2}
+.bateau:nth-of-type(odd){background:var(--sauge-clair)}
 .dessin{position:relative;padding:6% 0}
 .dessin::before{
-  content:"";position:absolute;inset:0 -6%;border-radius:50%;
-  background:radial-gradient(ellipse at 50% 55%,rgba(143,211,255,.22),rgba(143,211,255,0) 68%);
+  content:"";position:absolute;inset:-4% -6%;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 55%,var(--sauge) 0%,rgba(183,198,168,.55) 55%,rgba(183,198,168,0) 72%);
 }
-.dessin img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 22px 28px rgba(10,8,40,.45))}
-.type{color:var(--ciel);font-weight:500;margin-bottom:6px}
+.dessin img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 20px 22px rgba(60,55,35,.28))}
+.type{color:var(--brun-doux);font-weight:500;margin-bottom:6px}
 h2{
-  font-family:var(--titre);font-weight:800;
-  font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;letter-spacing:-.02em;
-  margin-bottom:22px;
+  font-family:var(--titre);font-weight:800;color:var(--encre);
+  font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;letter-spacing:-.02em;margin-bottom:22px;
 }
-.bateau p{color:var(--voile);max-width:44ch}
-.fiche{
-  margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;
-}
-.fiche span{
-  padding:8px 18px;border-radius:999px;font-size:.95rem;
-  background:rgba(255,255,255,.1);
-}
-.fiche b{font-weight:600;color:var(--ciel);margin-right:6px}
+.bateau p{color:var(--gris);max-width:44ch}
+.fiche{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+.fiche span{padding:8px 18px;border-radius:999px;font-size:.95rem;background:rgba(95,122,97,.13)}
+.bateau:nth-of-type(odd) .fiche span{background:rgba(255,255,255,.6)}
+.fiche b{font-weight:600;color:var(--vert);margin-right:6px}
 
 /* contact */
-.contact{
-  text-align:center;padding:110px 24px 70px;
-  background:radial-gradient(ellipse at 50% 0%,rgba(143,211,255,.16),transparent 65%);
-}
+.contact{text-align:center;padding:110px 24px 70px;background:var(--brun);color:var(--creme)}
 .contact h3{font-family:var(--titre);font-weight:800;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:14px}
-.contact p{color:var(--voile);max-width:40ch;margin:0 auto 34px}
-.bouton{
-  display:inline-block;background:var(--ciel);color:var(--nuit);
-  font-weight:600;padding:15px 34px;border-radius:999px;transition:transform .2s;
-}
+.contact p{color:rgba(244,241,234,.8);max-width:40ch;margin:0 auto 34px}
+.bouton{display:inline-block;background:var(--creme);color:var(--brun);font-weight:600;padding:15px 34px;border-radius:999px;transition:transform .2s}
 .bouton:hover{transform:translateY(-2px)}
-.coord{margin-top:30px;color:var(--voile);font-size:.98rem}
-footer{text-align:center;padding:30px 24px 50px;color:rgba(255,255,255,.5);font-size:.9rem}
+.coord{margin-top:30px;color:rgba(244,241,234,.8);font-size:.98rem}
+footer{text-align:center;padding:30px 24px 50px;color:rgba(244,241,234,.65);font-size:.9rem;background:var(--brun)}
 
 @media(max-width:760px){
   .bateau,.bateau:nth-of-type(even){grid-template-columns:1fr;gap:32px;padding:70px 24px}
   .bateau:nth-of-type(even) .dessin{order:0}
-  .dessin{width:100%}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -132,15 +115,14 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(255,255,255,.5);font-
 <main>
 
 <section class="accueil" id="accueil">
-  <div>
-    <!-- Ajoute ton logo dans le dépôt sous le nom logo.png -->
-    <img src="logo.png" alt="BDSM, les bateaux de St Mandrier">
-    <p>Trois bateaux construits à St Mandrier, pour la pêche et la balade.</p>
+  <video autoplay muted loop playsinline preload="auto" poster="accueil.jpg" aria-hidden="true">
+    <source src="accueil.mp4" type="video/mp4">
+  </video>
+  <div class="titre">
+    <h1>Les bateaux<br>de St Mandrier</h1>
+    <p>Trois bateaux construits sur place, pour la pêche et la balade.</p>
+    <!-- Le logo viendra ici une fois refait : <img src="logo.png" alt="BDSM" class="logo"> -->
   </div>
-  <svg class="vague" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-    <path class="b" d="M0 50 C240 90 480 10 720 45 C960 80 1200 15 1440 50 L1440 90 L0 90 Z"/>
-    <path d="M0 65 C260 30 520 90 780 60 C1040 30 1240 80 1440 62 L1440 90 L0 90 Z"/>
-  </svg>
 </section>
 
 <section class="bateau" id="sillage">
