@@ -71,17 +71,12 @@ nav a:hover{background:var(--ciel);color:var(--nuit)}
   display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;
 }
 .bateau:nth-of-type(even){grid-template-columns:1fr 1.1fr}
-.bateau:nth-of-type(even) .dessin{order:2}
-.dessin{
-  aspect-ratio:1/1;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,rgba(143,211,255,.22),rgba(143,211,255,.04) 70%);
-  display:grid;place-items:center;padding:12%;
+.bateau:nth-of-type(even) .dessin{position:relative;padding:6% 0}
+.dessin::before{
+  content:"";position:absolute;inset:0 -6%;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 55%,rgba(143,211,255,.22),rgba(143,211,255,0) 68%);
 }
-.dessin svg{width:100%;height:auto;overflow:visible}
-.dessin path,.dessin line{
-  fill:none;stroke:var(--ciel);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;
-  vector-effect:non-scaling-stroke;
-}
+.dessin img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 22px 28px rgba(10,8,40,.45))}
 .type{color:var(--ciel);font-weight:500;margin-bottom:6px}
 h2{
   font-family:var(--titre);font-weight:800;
@@ -97,18 +92,6 @@ h2{
   background:rgba(255,255,255,.1);
 }
 .fiche b{font-weight:600;color:var(--ciel);margin-right:6px}
-
-/* comparaison */
-.echelle{max-width:900px;margin:0 auto;padding:60px 28px 110px;text-align:center}
-.echelle h3{font-family:var(--titre);font-weight:600;font-size:1.8rem;margin-bottom:8px}
-.echelle p{color:var(--voile);margin-bottom:44px}
-.echelle svg{width:100%;height:auto}
-.echelle path,.echelle line{
-  fill:none;stroke:var(--ciel);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
-  vector-effect:non-scaling-stroke;
-}
-.echelle text{fill:var(--blanc);font-family:var(--texte);font-size:15px}
-.echelle text.m{fill:var(--ciel)}
 
 /* contact */
 .contact{
@@ -128,7 +111,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(255,255,255,.5);font-
 @media(max-width:760px){
   .bateau,.bateau:nth-of-type(even){grid-template-columns:1fr;gap:32px;padding:70px 24px}
   .bateau:nth-of-type(even) .dessin{order:0}
-  .dessin{max-width:320px;margin:0 auto;width:100%}
+  .dessin{width:100%}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -161,12 +144,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(255,255,255,.5);font-
 
 <section class="bateau" id="sillage">
   <div class="dessin">
-    <svg viewBox="0 0 200 90" aria-hidden="true">
-      <path d="M5 40 L195 28 Q185 70 150 72 L25 72 Q8 66 5 40 Z"/>
-      <line x1="60" y1="46" x2="60" y2="60"/>
-      <line x1="100" y1="44" x2="100" y2="60"/>
-      <line x1="140" y1="42" x2="140" y2="60"/>
-    </svg>
+    <img src="sillage4.png" alt="Sillage 4" loading="lazy">
   </div>
   <div>
     <div class="type">Bateau A</div>
@@ -183,13 +161,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(255,255,255,.5);font-
 
 <section class="bateau" id="lombarde">
   <div class="dessin">
-    <svg viewBox="0 0 200 90" aria-hidden="true">
-      <path d="M5 42 L195 28 Q185 70 150 72 L25 72 Q8 66 5 42 Z"/>
-      <path d="M95 36 L100 20 L140 20 L148 34"/>
-      <line x1="40" y1="48" x2="40" y2="60"/>
-      <line x1="70" y1="46" x2="70" y2="60"/>
-      <line x1="170" y1="30" x2="170" y2="8"/>
-    </svg>
+    <img src="lombarde55.png" alt="Lombarde 5.5" loading="lazy">
   </div>
   <div>
     <div class="type">Bateau B</div>
@@ -206,13 +178,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(255,255,255,.5);font-
 
 <section class="bateau" id="makaire">
   <div class="dessin">
-    <svg viewBox="0 0 200 90" aria-hidden="true">
-      <path d="M5 44 L195 28 Q186 72 150 74 L25 74 Q8 68 5 44 Z"/>
-      <path d="M60 40 L66 20 L130 20 L142 36"/>
-      <path d="M30 46 L40 34 L58 38"/>
-      <line x1="160" y1="30" x2="160" y2="10"/>
-      <line x1="80" y1="20" x2="80" y2="8"/>
-    </svg>
+    <img src="makaire8.png" alt="Makaire 8" loading="lazy">
   </div>
   <div>
     <div class="type">Bateau C</div>
@@ -225,27 +191,6 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(255,255,255,.5);font-
       <span><b>Moteurs</b>jusqu'à deux moteurs puissants</span>
     </div>
   </div>
-</section>
-
-<section class="echelle" aria-label="Comparaison des tailles">
-  <h3>Trois tailles, un même chantier</h3>
-  <p>Les bateaux dessinés à la même échelle.</p>
-  <svg viewBox="0 0 440 250" role="img" aria-label="Sillage 4 mesure 4 mètres, Lombarde 5.5 mesure 5,5 mètres, Makaire 8 mesure 8 mètres">
-    <g transform="translate(20,10)">
-      <path d="M0 18 L200 8 Q192 40 160 42 L18 42 Q4 38 0 18 Z"/>
-      <text x="210" y="32">Sillage 4</text><text class="m" x="210" y="50">4 m</text>
-    </g>
-    <g transform="translate(20,90)">
-      <path d="M0 18 L275 6 Q265 40 220 42 L22 42 Q4 38 0 18 Z"/>
-      <path d="M130 14 L140 0 L200 0 L212 12"/>
-      <text x="290" y="30">Lombarde 5.5</text><text class="m" x="290" y="48">5,50 m</text>
-    </g>
-    <g transform="translate(20,170)">
-      <path d="M0 18 L400 4 Q386 44 320 46 L26 46 Q6 40 0 18 Z"/>
-      <path d="M90 14 L100 -4 L260 -4 L280 10"/>
-      <text x="20" y="75" class="m">Makaire 8, 8 m</text>
-    </g>
-  </svg>
 </section>
 
 <section class="contact" id="contact">
