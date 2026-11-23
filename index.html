@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Les bateaux de St Mandrier</title>
-<meta name="description" content="Les bateaux de St Mandrier : Sillage 4, Lombarde 5.5 et Makaire 8.">
+<meta name="description" content="Les bateaux de St Mandrier: Sillage 4, Lombarde 5.5 and Makaire 8, boats built in St Mandrier sur Mer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500&display=swap" rel="stylesheet">
@@ -35,10 +35,10 @@ nav{
   background:rgba(244,241,234,.82);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
 }
-nav a{color:var(--brun);font-weight:500;font-size:.95rem;padding:8px 18px;border-radius:999px;transition:background .2s,color .2s}
+nav a{color:var(--brun);font-weight:500;font-size:.95rem;padding:8px 16px;border-radius:999px;transition:background .2s,color .2s}
 nav a:hover{background:var(--vert);color:var(--creme)}
 
-/* accueil */
+/* home */
 .accueil{
   position:relative;min-height:100vh;min-height:100svh;overflow:hidden;
   display:flex;flex-direction:column;align-items:center;text-align:center;
@@ -51,6 +51,7 @@ nav a:hover{background:var(--vert);color:var(--creme)}
   background:linear-gradient(180deg,rgba(54,62,46,.6) 0%,rgba(54,62,46,.22) 34%,rgba(54,62,46,0) 52%,rgba(244,241,234,0) 80%,var(--creme) 100%);
 }
 .accueil .titre{position:relative;z-index:2}
+.logo{display:block;width:96px;height:auto;margin:0 auto 18px}
 .accueil h1{
   font-family:var(--titre);font-weight:800;color:var(--creme);
   font-size:clamp(2.6rem,7vw,5.6rem);line-height:1;letter-spacing:-.025em;
@@ -59,30 +60,75 @@ nav a:hover{background:var(--vert);color:var(--creme)}
 .accueil p{margin:18px auto 0;font-size:clamp(1.05rem,2vw,1.3rem);color:var(--creme);max-width:32ch;text-shadow:0 1px 18px rgba(40,46,34,.5)}
 @media(prefers-reduced-motion:reduce){.accueil video{display:none}}
 
-/* bateaux */
+/* generic blocks */
+.bloc{padding:110px max(28px,calc((100% - 1000px)/2))}
+.bloc.clair{background:var(--sauge-clair)}
+.etiquette{color:var(--brun-doux);font-weight:500;margin-bottom:6px}
+h2{
+  font-family:var(--titre);font-weight:800;color:var(--encre);
+  font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;letter-spacing:-.02em;margin-bottom:22px;
+}
+h2.section{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:34px}
+h3{font-family:var(--titre);font-weight:600;font-size:1.3rem;line-height:1.2;margin-bottom:8px}
+.bloc p{color:var(--gris)}
+
+/* about */
+.apropos{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
+.devise{
+  font-family:var(--titre);font-weight:600;font-size:clamp(1.3rem,2.6vw,1.8rem);
+  color:var(--vert);line-height:1.25;margin:0 0 22px;
+}
+.apropos p+p{margin-top:14px}
+.valeurs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.carte{background:rgba(255,255,255,.6);border-radius:22px;padding:26px}
+.carte p{font-size:.97rem}
+.video-marque{margin-top:56px}
+video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre);box-shadow:0 20px 40px rgba(60,55,35,.18)}
+.legende{font-size:.88rem;color:var(--gris);margin-top:10px}
+
+/* boats */
 .bateau{
   padding:110px max(28px,calc((100% - 1000px)/2));
   display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;
 }
-.bateau:nth-of-type(even){grid-template-columns:1fr 1.1fr}
-.bateau:nth-of-type(even) .dessin{order:2}
-.bateau:nth-of-type(odd){background:var(--sauge-clair)}
+.bateau:nth-of-type(odd){grid-template-columns:1fr 1.1fr}
+.bateau:nth-of-type(odd) .dessin{order:2}
+.bateau:nth-of-type(even){background:var(--sauge-clair)}
 .dessin{position:relative;padding:6% 0}
 .dessin::before{
   content:"";position:absolute;inset:-4% -6%;border-radius:50%;
   background:radial-gradient(ellipse at 50% 55%,var(--sauge) 0%,rgba(183,198,168,.55) 55%,rgba(183,198,168,0) 72%);
 }
 .dessin img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 20px 22px rgba(60,55,35,.28))}
-.type{color:var(--brun-doux);font-weight:500;margin-bottom:6px}
-h2{
-  font-family:var(--titre);font-weight:800;color:var(--encre);
-  font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;letter-spacing:-.02em;margin-bottom:22px;
-}
 .bateau p{color:var(--gris);max-width:44ch}
 .fiche{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
 .fiche span{padding:8px 18px;border-radius:999px;font-size:.95rem;background:rgba(95,122,97,.13)}
-.bateau:nth-of-type(odd) .fiche span{background:rgba(255,255,255,.6)}
+.bateau:nth-of-type(even) .fiche span{background:rgba(255,255,255,.6)}
 .fiche b{font-weight:600;color:var(--vert);margin-right:6px}
+.spot{grid-column:1/-1;max-width:760px;width:100%;justify-self:center}
+.spot .legende{text-align:center}
+
+/* events */
+.evenements{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.evenement{background:rgba(255,255,255,.6);border-radius:22px;padding:28px}
+.date{display:inline-block;background:var(--vert);color:var(--creme);font-weight:600;font-size:.85rem;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.lieu{font-weight:500;color:var(--brun);font-size:.95rem;margin-bottom:10px}
+
+/* gallery */
+.galerie{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.galerie figure{border-radius:18px;overflow:hidden;background:var(--sauge);aspect-ratio:4/3}
+.galerie img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.galerie figure:hover img{transform:scale(1.04)}
+
+/* press */
+.presse{display:grid;gap:18px}
+.article{background:rgba(255,255,255,.6);border-radius:22px;padding:28px}
+.source{font-size:.88rem;font-weight:500;color:var(--brun-doux);margin-bottom:8px}
+
+/* social */
+.reseaux{display:flex;flex-wrap:wrap;gap:12px}
+.reseaux a{background:var(--vert);color:var(--creme);font-weight:500;padding:12px 26px;border-radius:999px;transition:transform .2s}
+.reseaux a:hover{transform:translateY(-2px)}
 
 /* contact */
 .contact{text-align:center;padding:110px 24px 70px;background:var(--brun);color:var(--creme)}
@@ -90,12 +136,15 @@ h2{
 .contact p{color:rgba(244,241,234,.8);max-width:40ch;margin:0 auto 34px}
 .bouton{display:inline-block;background:var(--creme);color:var(--brun);font-weight:600;padding:15px 34px;border-radius:999px;transition:transform .2s}
 .bouton:hover{transform:translateY(-2px)}
-.coord{margin-top:30px;color:rgba(244,241,234,.8);font-size:.98rem}
+.coord{margin-top:34px;color:rgba(244,241,234,.85);font-size:.98rem;line-height:1.9}
 footer{text-align:center;padding:30px 24px 50px;color:rgba(244,241,234,.65);font-size:.9rem;background:var(--brun)}
 
 @media(max-width:760px){
-  .bateau,.bateau:nth-of-type(even){grid-template-columns:1fr;gap:32px;padding:70px 24px}
-  .bateau:nth-of-type(even) .dessin{order:0}
+  .bloc{padding:70px 24px}
+  .apropos,.valeurs{grid-template-columns:1fr}
+  .galerie{grid-template-columns:1fr 1fr}
+  .bateau,.bateau:nth-of-type(odd){grid-template-columns:1fr;gap:32px;padding:70px 24px}
+  .bateau:nth-of-type(odd) .dessin{order:0}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -103,11 +152,15 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(244,241,234,.65);font
 <body>
 
 <header>
-  <nav aria-label="Menu principal">
-    <a href="#accueil">Accueil</a>
+  <nav aria-label="Main menu">
+    <a href="#accueil">Home</a>
+    <a href="#about">About</a>
     <a href="#sillage">Sillage 4</a>
     <a href="#lombarde">Lombarde 5.5</a>
     <a href="#makaire">Makaire 8</a>
+    <a href="#events">Events</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#press">Press</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -119,26 +172,71 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(244,241,234,.65);font
     <source src="accueil.mp4" type="video/mp4">
   </video>
   <div class="titre">
+    <img src="logo.png" alt="Les bateaux de St Mandrier logo" class="logo">
     <h1>Les bateaux<br>de St Mandrier</h1>
-    <p>Trois bateaux construits sur place, pour la pêche et la balade.</p>
-    <!-- Le logo viendra ici une fois refait : <img src="logo.png" alt="BDSM" class="logo"> -->
+    <p>Three boats built right here, for fishing and leisure.</p>
   </div>
 </section>
+
+<section class="bloc" id="about">
+  <div class="apropos">
+    <div>
+      <div class="etiquette">Who we are</div>
+      <h2 class="section">Boats built by the sea, for the sea</h2>
+      <p class="devise">“Built here, made for the water.”</p>
+    </div>
+    <div>
+      <p>Les bateaux de St Mandrier is a small boatyard based in St Mandrier sur Mer, in the south of France. We design and build three pleasure boats in our own workshop: a light fishing boat, a cosy cruiser and a comfortable big-game fishing boat.</p>
+      <p>Our philosophy is simple: a good boat should be easy to use, honest in its construction and made to last. We build every boat by hand, close to the water it will sail on, and we take the time to help each customer choose the model that fits what they want to do on the water.</p>
+    </div>
+  </div>
+
+  <div class="valeurs">
+    <div class="carte">
+      <h3>Craftsmanship</h3>
+      <p>Each boat is built by hand in our workshop, with care for every detail.</p>
+    </div>
+    <div class="carte">
+      <h3>Simplicity</h3>
+      <p>Boats that are easy to handle, transport and maintain, for everyone.</p>
+    </div>
+    <div class="carte">
+      <h3>Respect for the sea</h3>
+      <p>Low draft, efficient hulls and local building: we want to leave a light wake.</p>
+    </div>
+  </div>
+
+  <div class="video-marque">
+    <video class="lecteur" controls preload="metadata" poster="accueil.jpg">
+      <source src="brand-video.mp4" type="video/mp4">
+      <track kind="subtitles" src="brand-video-en.vtt" srclang="en" label="English" default>
+    </video>
+    <p class="legende">Our brand film (French audio, English subtitles).</p>
+  </div>
+</section>
+
+<div id="boats">
 
 <section class="bateau" id="sillage">
   <div class="dessin">
     <img src="sillage4.png" alt="Sillage 4" loading="lazy">
   </div>
   <div>
-    <div class="type">Bateau A</div>
     <h2>Sillage 4</h2>
-    <p>Le plus simple de la gamme et le plus léger. Un bateau de pêche pour le pêcheur assidu, qui sert aussi pour la balade, et qui passe là où l'eau est basse grâce à son très faible tirant d'eau.</p>
+    <p>The simplest and lightest boat in the range. A fishing boat for the dedicated angler that is also great for leisure outings, and that can go where the water is shallow thanks to its very shallow draft.</p>
     <div class="fiche">
-      <span><b>Longueur</b>4 m</span>
-      <span><b>Poids</b>250 kg</span>
-      <span><b>Équipement</b>3 banquettes en bois</span>
-      <span><b>Propulsion</b>rame, godille ou petit moteur</span>
+      <span><b>Length</b>4 m</span>
+      <span><b>Weight</b>250 kg</span>
+      <span><b>Equipment</b>3 wooden benches</span>
+      <span><b>Propulsion</b>oars, sculling or small engine</span>
     </div>
+  </div>
+  <div class="spot">
+    <video class="lecteur" controls preload="metadata" poster="sillage4.png">
+      <source src="spot-sillage4.mp4" type="video/mp4">
+      <track kind="subtitles" src="spot-sillage4-en.vtt" srclang="en" label="English" default>
+    </video>
+    <p class="legende">Sillage 4 advert (French audio, English subtitles)</p>
   </div>
 </section>
 
@@ -147,15 +245,21 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(244,241,234,.65);font
     <img src="lombarde55.png" alt="Lombarde 5.5" loading="lazy">
   </div>
   <div>
-    <div class="type">Bateau B</div>
     <h2>Lombarde 5.5</h2>
-    <p>Pensé pour la promenade en mer, sur un lac, un estuaire ou un canal. Facile à transporter, il offre une cabine pour deux personnes et peut recevoir un coin cuisine. L'arrière accueille deux banquettes et une plate-forme.</p>
+    <p>Designed for cruising at sea, on a lake, an estuary or a canal. Easy to transport, it offers a cabin for two people and can be fitted with a galley. The stern has two benches and a platform.</p>
     <div class="fiche">
-      <span><b>Longueur</b>5,50 m</span>
-      <span><b>Poids</b>500 kg</span>
-      <span><b>Cabine</b>2 personnes</span>
-      <span><b>Option</b>moteur hors-bord ou mât</span>
+      <span><b>Length</b>5.50 m</span>
+      <span><b>Weight</b>500 kg</span>
+      <span><b>Cabin</b>2 people</span>
+      <span><b>Option</b>outboard motor or mast</span>
     </div>
+  </div>
+  <div class="spot">
+    <video class="lecteur" controls preload="metadata" poster="lombarde55.png">
+      <source src="spot-lombarde55.mp4" type="video/mp4">
+      <track kind="subtitles" src="spot-lombarde55-en.vtt" srclang="en" label="English" default>
+    </video>
+    <p class="legende">Lombarde 5.5 advert (French audio, English subtitles)</p>
   </div>
 </section>
 
@@ -164,28 +268,105 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(244,241,234,.65);font
     <img src="makaire8.png" alt="Makaire 8" loading="lazy">
   </div>
   <div>
-    <div class="type">Bateau C</div>
     <h2>Makaire 8</h2>
-    <p>Le plus grand et le plus confortable. Il est fait pour les sorties en mer ou sur un lac, et pour la pêche au gros. Une cabine à l'avant, une cabine centrale avec cuisine ou coin détente, un poste de pilotage à l'arrière et un solarium sur le toit.</p>
+    <p>The largest and most comfortable. Made for trips at sea or on a lake, and for big-game fishing. A forward cabin, a central cabin with a galley or lounge area, a helm station at the stern and a sun deck on the roof.</p>
     <div class="fiche">
-      <span><b>Longueur</b>8 m</span>
-      <span><b>Poids</b>1 300 kg</span>
-      <span><b>Cabines</b>2</span>
-      <span><b>Moteurs</b>jusqu'à deux moteurs puissants</span>
+      <span><b>Length</b>8 m</span>
+      <span><b>Weight</b>1,300 kg</span>
+      <span><b>Cabins</b>2</span>
+      <span><b>Engines</b>up to two powerful engines</span>
     </div>
+  </div>
+  <div class="spot">
+    <video class="lecteur" controls preload="metadata" poster="makaire8.png">
+      <source src="spot-makaire8.mp4" type="video/mp4">
+      <track kind="subtitles" src="spot-makaire8-en.vtt" srclang="en" label="English" default>
+    </video>
+    <p class="legende">Makaire 8 advert (French audio, English subtitles)</p>
+  </div>
+</section>
+
+</div>
+
+<section class="bloc" id="events">
+  <div class="etiquette">Meet us</div>
+  <h2 class="section">Events &amp; exhibitions</h2>
+  <div class="evenements">
+    <article class="evenement">
+      <span class="date">14–17 April 2027</span>
+      <h3>Toulon Boat Show</h3>
+      <div class="lieu">Port of Toulon, Var</div>
+      <p>Our biggest trade event of the year. Come and see the Lombarde 5.5 and the Makaire 8 on display, talk to our builders and discover our latest options.</p>
+    </article>
+    <article class="evenement">
+      <span class="date">3 July 2027</span>
+      <h3>St Mandrier Sea Festival</h3>
+      <div class="lieu">St Mandrier sur Mer</div>
+      <p>A day of boat parades, local food and sea trials. Visitors can step aboard the Sillage 4 and try it out in the bay.</p>
+    </article>
+  </div>
+</section>
+
+<section class="bloc clair" id="gallery">
+  <div class="etiquette">In pictures</div>
+  <h2 class="section">Photo gallery</h2>
+  <div class="galerie">
+    <figure><img src="galerie1.jpg" alt="Sillage 4 sailing in the bay" loading="lazy"></figure>
+    <figure><img src="galerie2.jpg" alt="Lombarde 5.5 at anchor near the coast" loading="lazy"></figure>
+    <figure><img src="galerie3.jpg" alt="Makaire 8 heading out to sea" loading="lazy"></figure>
+    <figure><img src="galerie4.jpg" alt="Boat under construction in the workshop" loading="lazy"></figure>
+    <figure><img src="galerie5.jpg" alt="Interior of the Lombarde 5.5 cabin" loading="lazy"></figure>
+    <figure><img src="galerie6.jpg" alt="Sun deck of the Makaire 8" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="bloc" id="press">
+  <div class="etiquette">In the news</div>
+  <h2 class="section">Press releases</h2>
+  <div class="presse">
+    <article class="article">
+      <div class="source">Mediterranean Boating Review · 12 January 2027</div>
+      <h3>A new light fishing boat is born in St Mandrier</h3>
+      <p>Les bateaux de St Mandrier unveils the Sillage 4, a 4-metre boat weighing only 250 kg. Its very shallow draft lets anglers reach spots that larger boats cannot.</p>
+    </article>
+    <article class="article">
+      <div class="source">Var Coast Daily · 2 March 2027</div>
+      <h3>The Lombarde 5.5: a small cruiser for lakes, estuaries and the sea</h3>
+      <p>Easy to tow and equipped with a cabin for two, the Lombarde 5.5 is designed for relaxed outings. Options include an outboard motor or a mast.</p>
+    </article>
+    <article class="article">
+      <div class="source">Big Game &amp; Leisure Magazine · 20 May 2027</div>
+      <h3>Makaire 8: comfort and big-game fishing in one boat</h3>
+      <p>With two cabins, a helm station at the stern and a sun deck on the roof, the Makaire 8 is the boatyard's flagship. It can take up to two powerful engines.</p>
+    </article>
+  </div>
+</section>
+
+<section class="bloc clair" id="social">
+  <div class="etiquette">Follow us</div>
+  <h2 class="section">Social networks</h2>
+  <div class="reseaux">
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
   </div>
 </section>
 
 <section class="contact" id="contact">
-  <h3>Un projet de bateau</h3>
-  <p>Dis-nous ce que tu veux faire sur l'eau, on t'aide à choisir le bon modèle.</p>
-  <a class="bouton" href="mailto:contact@exemple.fr">Nous écrire</a>
-  <div class="coord">St Mandrier sur Mer, Var</div>
+  <h3>Have a boat project?</h3>
+  <p>Tell us what you want to do on the water, and we will help you choose the right model.</p>
+  <a class="bouton" href="mailto:contact@exemple.fr">Write to us</a>
+  <div class="coord">
+    Les bateaux de St Mandrier<br>
+    St Mandrier sur Mer, Var, France<br>
+    contact@exemple.fr<br>
+    +33 4 00 00 00 00
+  </div>
 </section>
 
 </main>
 
-<footer>Les bateaux de St Mandrier</footer>
+<footer>© 2026 Les bateaux de St Mandrier</footer>
 
 </body>
 </html>
