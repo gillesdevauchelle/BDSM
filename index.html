@@ -118,8 +118,42 @@ video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre
 .fiche span{padding:8px 18px;border-radius:999px;font-size:.95rem;background:rgba(63,115,176,.13)}
 .bateau:nth-of-type(even) .fiche span{background:rgba(255,255,255,.6)}
 .fiche b{font-weight:600;color:var(--vert);margin-right:6px}
-.spot{grid-column:1/-1;max-width:760px;width:100%;justify-self:center}
-.spot .legende{text-align:center}
+
+/* authenticity */
+.avertissement{
+  background:var(--brun);color:var(--creme);border-radius:22px;padding:28px 30px;margin-bottom:28px;
+}
+.avertissement p{color:rgba(243,247,251,.88)}
+.avertissement strong{color:#ffd166}
+.etapes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.etape{background:rgba(255,255,255,.6);border-radius:22px;padding:26px}
+.etape .num{
+  display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;
+  background:var(--vert);color:var(--creme);font-family:var(--titre);font-weight:800;margin-bottom:12px;
+}
+.etape p{font-size:.97rem}
+.verif{
+  margin-top:28px;background:rgba(255,255,255,.6);border-radius:22px;padding:30px;
+}
+.verif label{display:block;font-family:var(--titre);font-weight:600;font-size:1.2rem;color:var(--encre);margin-bottom:12px}
+.verif-ligne{display:flex;flex-wrap:wrap;gap:10px}
+.verif input{
+  flex:1 1 240px;min-width:0;padding:14px 22px;border-radius:999px;border:2px solid var(--sauge);
+  background:#fff;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1rem;color:var(--encre);
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.verif input:focus{outline:none;border-color:var(--vert)}
+.verif button{
+  border:0;cursor:pointer;background:var(--vert);color:var(--creme);font-family:var(--texte);
+  font-weight:600;font-size:1rem;padding:14px 30px;border-radius:999px;transition:transform .2s,background .2s;
+}
+.verif button:hover{transform:translateY(-2px);background:var(--brun)}
+.verif .aide{font-size:.88rem;color:var(--gris);margin-top:10px}
+.resultat{margin-top:18px;padding:16px 22px;border-radius:18px;font-weight:600;display:none}
+.resultat.visible{display:block}
+.resultat.ok{background:rgba(63,115,176,.15);color:var(--brun);font-family:var(--titre);font-size:1.6rem;font-weight:800}
+.resultat.inconnu{background:rgba(95,134,189,.15);color:var(--brun)}
+.resultat.erreur{background:rgba(200,60,40,.12);color:#a3321f}
 
 /* events */
 .evenements{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
@@ -154,7 +188,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
 
 @media(max-width:760px){
   .bloc{padding:70px 24px}
-  .apropos,.valeurs{grid-template-columns:1fr}
+  .apropos,.valeurs,.etapes{grid-template-columns:1fr}
   .galerie{grid-template-columns:1fr 1fr}
   .bateau{grid-template-columns:1fr;gap:32px;padding:70px 24px}
 }
@@ -171,6 +205,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
     <a href="#sillage">Sillage 4</a>
     <a href="#lombarde">Lombarde 5.5</a>
     <a href="#makaire">Makaire 8</a>
+    <a href="#authenticity">Authenticity</a>
     <a href="#events">Events</a>
     <a href="#gallery">Gallery</a>
     <a href="#press">Press</a>
@@ -196,7 +231,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
       <img class="logo-apropos" src="logo.png" alt="Les bateaux de St Mandrier logo">
       <div class="etiquette">Who we are</div>
       <h2 class="section">Boats built by the sea, for the sea</h2>
-      <p class="devise">“Built here, made for the water.”</p>
+      <p class="devise">“Abolir les normes, conquérir les mers”</p>
     </div>
     <div>
       <p>Les bateaux de St Mandrier is a small boatyard based in St Mandrier sur Mer, in the south of France. We design and build three pleasure boats in our own workshop: a light fishing boat, a cosy cruiser and a comfortable big-game fishing boat.</p>
@@ -252,13 +287,6 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
       <span><b>Propulsion</b>oars, sculling or small engine</span>
     </div>
   </div>
-  <div class="spot">
-    <video class="lecteur" controls preload="metadata" poster="sillage4.png">
-      <source src="spot-sillage4.mp4" type="video/mp4">
-      <track kind="subtitles" src="spot-sillage4-en.vtt" srclang="en" label="English" default>
-    </video>
-    <p class="legende">Sillage 4 advert (French audio, English subtitles)</p>
-  </div>
 </section>
 
 <section class="bateau" id="lombarde">
@@ -283,13 +311,6 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
       <span><b>Option</b>outboard motor or mast</span>
     </div>
   </div>
-  <div class="spot">
-    <video class="lecteur" controls preload="metadata" poster="lombarde55.png">
-      <source src="spot-lombarde55.mp4" type="video/mp4">
-      <track kind="subtitles" src="spot-lombarde55-en.vtt" srclang="en" label="English" default>
-    </video>
-    <p class="legende">Lombarde 5.5 advert (French audio, English subtitles)</p>
-  </div>
 </section>
 
 <section class="bateau" id="makaire">
@@ -306,16 +327,46 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
       <span><b>Engines</b>up to two powerful engines</span>
     </div>
   </div>
-  <div class="spot">
-    <video class="lecteur" controls preload="metadata" poster="makaire8.png">
-      <source src="spot-makaire8.mp4" type="video/mp4">
-      <track kind="subtitles" src="spot-makaire8-en.vtt" srclang="en" label="English" default>
-    </video>
-    <p class="legende">Makaire 8 advert (French audio, English subtitles)</p>
-  </div>
 </section>
 
 </div>
+
+<section class="bloc clair" id="authenticity">
+  <div class="etiquette">One boatyard only</div>
+  <h2 class="section">Check your hull in 30 seconds</h2>
+
+  <div class="avertissement">
+    <p><strong>Warning:</strong> our boats are only built in St Mandrier. A manufacturer in Asia uses our name. Our company is an authorised distributor: every boat shown here is authentic.</p>
+  </div>
+
+  <div class="etapes">
+    <div class="etape">
+      <div class="num">1</div>
+      <h3>Hull number</h3>
+      <p>Engraved on the hull, it starts with <b>FR-SMD</b>, our builder code, followed by 4 digits.</p>
+    </div>
+    <div class="etape">
+      <div class="num">2</div>
+      <h3>Plate</h3>
+      <p>The builder's plate carries our name and the CE marking.</p>
+    </div>
+    <div class="etape">
+      <div class="num">3</div>
+      <h3>Certificate</h3>
+      <p>The “Coque signée Saint-Mandrier” certificate carries the same number.</p>
+    </div>
+  </div>
+
+  <form class="verif" id="formVerif" novalidate>
+    <label for="numCoque">Enter your hull number</label>
+    <div class="verif-ligne">
+      <input id="numCoque" name="numCoque" type="text" inputmode="text" autocomplete="off" maxlength="11" placeholder="FR-SMD0000" aria-describedby="aideCoque">
+      <button type="submit">Verify</button>
+    </div>
+    <p class="aide" id="aideCoque">Format: FR-SMD followed by 4 digits.</p>
+    <div class="resultat" id="resultatVerif" role="status" aria-live="polite"></div>
+  </form>
+</section>
 
 <section class="bloc" id="events">
   <div class="etiquette">Meet us</div>
@@ -387,7 +438,9 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
   <a class="bouton" href="mailto:contact@exemple.fr">Write to us</a>
   <div class="coord">
     Les bateaux de St Mandrier<br>
-    St Mandrier sur Mer, Var, France<br>
+    Port de plaisance Pin Rolland<br>
+    3 route Michel Giovanni<br>
+    83430 Saint-Mandrier-sur-Mer, France<br>
     contact@exemple.fr<br>
     +33 4 00 00 00 00
   </div>
@@ -408,6 +461,30 @@ document.querySelectorAll('.carrousel').forEach(function(c){
   c.querySelector('.prev').addEventListener('click',function(){show(i-1)});
   c.querySelector('.suiv').addEventListener('click',function(){show(i+1)});
 });
+
+/* hull number check (demo only, no real database yet) */
+(function(){
+  var form=document.getElementById('formVerif'),
+      input=document.getElementById('numCoque'),
+      out=document.getElementById('resultatVerif');
+  function afficher(classe,texte){
+    out.className='resultat visible '+classe;
+    out.textContent=texte;
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=input.value.trim().toUpperCase();
+    if(!/^FR-SMD\d{4}$/.test(v)){
+      afficher('erreur','Invalid format. A hull number looks like FR-SMD0000.');
+      return;
+    }
+    if(v==='FR-SMD6767'){
+      afficher('ok','gooning !!!');
+    }else{
+      afficher('inconnu','Hull number not found.');
+    }
+  });
+})();
 </script>
 </body>
 </html>
