@@ -120,40 +120,33 @@ video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre
 .fiche b{font-weight:600;color:var(--vert);margin-right:6px}
 
 /* authenticity */
-.avertissement{
-  background:var(--brun);color:var(--creme);border-radius:22px;padding:28px 30px;margin-bottom:28px;
+.bloc p.alerte{
+  font-family:var(--titre);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.45rem);
+  line-height:1.35;color:var(--brun);max-width:46ch;margin-bottom:48px;
 }
-.avertissement p{color:rgba(243,247,251,.88)}
-.avertissement strong{color:#ffd166}
-.etapes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.etape{background:rgba(255,255,255,.6);border-radius:22px;padding:26px}
-.etape .num{
-  display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;
-  background:var(--vert);color:var(--creme);font-family:var(--titre);font-weight:800;margin-bottom:12px;
-}
+.alerte b{color:var(--vert)}
+.etapes{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.etape{border-top:2px solid var(--vert);padding-top:18px}
 .etape p{font-size:.97rem}
-.verif{
-  margin-top:28px;background:rgba(255,255,255,.6);border-radius:22px;padding:30px;
-}
-.verif label{display:block;font-family:var(--titre);font-weight:600;font-size:1.2rem;color:var(--encre);margin-bottom:12px}
+.verif{margin-top:60px}
+.verif label{display:block;font-family:var(--titre);font-weight:600;font-size:1.3rem;color:var(--encre);margin-bottom:14px}
 .verif-ligne{display:flex;flex-wrap:wrap;gap:10px}
 .verif input{
-  flex:1 1 240px;min-width:0;padding:14px 22px;border-radius:999px;border:2px solid var(--sauge);
-  background:#fff;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1rem;color:var(--encre);
-  text-transform:uppercase;letter-spacing:.04em;
+  flex:1 1 240px;min-width:0;padding:13px 24px;border-radius:999px;border:0;
+  background:rgba(255,255,255,.7);font-family:var(--texte);font-weight:500;font-size:1rem;color:var(--brun);
+  text-transform:uppercase;letter-spacing:.06em;
 }
-.verif input:focus{outline:none;border-color:var(--vert)}
+.verif input::placeholder{color:var(--brun-doux)}
+.verif input:focus-visible{outline:2px solid var(--vert);outline-offset:3px}
 .verif button{
   border:0;cursor:pointer;background:var(--vert);color:var(--creme);font-family:var(--texte);
-  font-weight:600;font-size:1rem;padding:14px 30px;border-radius:999px;transition:transform .2s,background .2s;
+  font-weight:500;font-size:1rem;padding:13px 30px;border-radius:999px;transition:transform .2s;
 }
-.verif button:hover{transform:translateY(-2px);background:var(--brun)}
+.verif button:hover{transform:translateY(-2px)}
 .verif .aide{font-size:.88rem;color:var(--gris);margin-top:10px}
-.resultat{margin-top:18px;padding:16px 22px;border-radius:18px;font-weight:600;display:none}
+.resultat{display:none;margin-top:26px;font-family:var(--titre);font-weight:600;font-size:1.2rem;color:var(--brun)}
 .resultat.visible{display:block}
-.resultat.ok{background:rgba(63,115,176,.15);color:var(--brun);font-family:var(--titre);font-size:1.6rem;font-weight:800}
-.resultat.inconnu{background:rgba(95,134,189,.15);color:var(--brun)}
-.resultat.erreur{background:rgba(200,60,40,.12);color:#a3321f}
+.resultat.ok{font-weight:800;font-size:clamp(2rem,5vw,3.2rem);line-height:1;letter-spacing:-.02em;color:var(--vert)}
 
 /* events */
 .evenements{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
@@ -335,23 +328,18 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
   <div class="etiquette">One boatyard only</div>
   <h2 class="section">Check your hull in 30 seconds</h2>
 
-  <div class="avertissement">
-    <p><strong>Warning:</strong> our boats are only built in St Mandrier. A manufacturer in Asia uses our name. Our company is an authorised distributor: every boat shown here is authentic.</p>
-  </div>
+  <p class="alerte"><b>Warning:</b> our boats are only built in St Mandrier. A manufacturer in Asia uses our name. Our company is an authorised distributor: every boat shown here is authentic.</p>
 
   <div class="etapes">
     <div class="etape">
-      <div class="num">1</div>
       <h3>Hull number</h3>
       <p>Engraved on the hull, it starts with <b>FR-SMD</b>, our builder code, followed by 4 digits.</p>
     </div>
     <div class="etape">
-      <div class="num">2</div>
       <h3>Plate</h3>
       <p>The builder's plate carries our name and the CE marking.</p>
     </div>
     <div class="etape">
-      <div class="num">3</div>
       <h3>Certificate</h3>
       <p>The “Coque signée Saint-Mandrier” certificate carries the same number.</p>
     </div>
