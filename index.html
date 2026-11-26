@@ -83,9 +83,6 @@ h3{font-family:var(--titre);font-weight:600;font-size:1.3rem;line-height:1.2;mar
   color:var(--vert);line-height:1.25;margin:0 0 22px;
 }
 .apropos p+p{margin-top:14px}
-.valeurs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
-.carte{background:rgba(255,255,255,.6);border-radius:22px;padding:26px}
-.carte p{font-size:.97rem}
 .video-marque{margin-top:56px}
 video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre);box-shadow:0 20px 40px rgba(30,45,95,.18)}
 .legende{font-size:.88rem;color:var(--gris);margin-top:10px}
@@ -118,6 +115,13 @@ video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre
 .fiche span{padding:8px 18px;border-radius:999px;font-size:.95rem;background:rgba(63,115,176,.13)}
 .bateau:nth-of-type(even) .fiche span{background:rgba(255,255,255,.6)}
 .fiche b{font-weight:600;color:var(--vert);margin-right:6px}
+
+/* commercial */
+.commercial{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.affiche a{display:block}
+.affiche img{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 20px 40px rgba(30,45,95,.18);transition:transform .3s}
+.affiche a:hover img{transform:translateY(-3px)}
+.pub video.lecteur{margin-top:10px}
 
 /* authenticity */
 .bloc p.alerte{
@@ -156,14 +160,16 @@ video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre
 
 /* gallery */
 .galerie{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.galerie figure{border-radius:18px;overflow:hidden;background:var(--sauge);aspect-ratio:4/3}
-.galerie img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.galerie figure:hover img{transform:scale(1.04)}
+.galerie figure{border-radius:18px;overflow:hidden;background:var(--sauge);aspect-ratio:3/2}
+.galerie .photo{display:block;width:100%;height:100%;background-image:url("catalogue.jpg");background-repeat:no-repeat;background-size:320% 320%;transition:transform .4s}
+.galerie figure:hover .photo{transform:scale(1.04)}
 
 /* press */
 .presse{display:grid;gap:18px}
-.article{background:rgba(255,255,255,.6);border-radius:22px;padding:28px}
+.article{display:block;background:rgba(255,255,255,.6);border-radius:22px;padding:28px;transition:transform .2s}
+.article:hover{transform:translateY(-3px)}
 .source{font-size:.88rem;font-weight:500;color:var(--brun-doux);margin-bottom:8px}
+.lire{display:inline-block;margin-top:14px;font-weight:600;color:var(--vert)}
 
 /* social */
 .reseaux{display:flex;flex-wrap:wrap;gap:12px}
@@ -181,7 +187,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
 
 @media(max-width:760px){
   .bloc{padding:70px 24px}
-  .apropos,.valeurs,.etapes{grid-template-columns:1fr}
+  .apropos,.etapes,.commercial{grid-template-columns:1fr}
   .galerie{grid-template-columns:1fr 1fr}
   .bateau{grid-template-columns:1fr;gap:32px;padding:70px 24px}
 }
@@ -198,6 +204,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
     <a href="#sillage">Sillage 4</a>
     <a href="#lombarde">Lombarde 5.5</a>
     <a href="#makaire">Makaire 8</a>
+    <a href="#commercial">Commercial</a>
     <a href="#authenticity">Authenticity</a>
     <a href="#events">Events</a>
     <a href="#gallery">Gallery</a>
@@ -229,21 +236,6 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
     <div>
       <p>Les bateaux de St Mandrier is a small boatyard based in St Mandrier sur Mer, in the south of France. We design and build three pleasure boats in our own workshop: a light fishing boat, a cosy cruiser and a comfortable big-game fishing boat.</p>
       <p>Our philosophy is simple: a good boat should be easy to use, honest in its construction and made to last. We build every boat by hand, close to the water it will sail on, and we take the time to help each customer choose the model that fits what they want to do on the water.</p>
-    </div>
-  </div>
-
-  <div class="valeurs">
-    <div class="carte">
-      <h3>Craftsmanship</h3>
-      <p>Each boat is built by hand in our workshop, with care for every detail.</p>
-    </div>
-    <div class="carte">
-      <h3>Simplicity</h3>
-      <p>Boats that are easy to handle, transport and maintain, for everyone.</p>
-    </div>
-    <div class="carte">
-      <h3>Respect for the sea</h3>
-      <p>Low draft, efficient hulls and local building: we want to leave a light wake.</p>
     </div>
   </div>
 
@@ -324,6 +316,28 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
 
 </div>
 
+<section class="bloc" id="commercial">
+  <div class="etiquette">Promotion</div>
+  <h2 class="section">Commercial</h2>
+  <div class="commercial">
+    <div class="affiche">
+      <a href="affiche-makaire8.png" target="_blank" rel="noopener" aria-label="Open the Makaire 8 poster in full size">
+        <img src="affiche-makaire8.png" alt="Makaire 8 promotional poster: 8 m, 1,300 kg, 2 cabins, twin engines. Abolir les normes, conquérir les mers." loading="lazy">
+      </a>
+      <p class="legende">Makaire 8 poster. Click to view it full size.</p>
+    </div>
+    <div class="pub">
+      <h3>Sillage 4 advert</h3>
+      <p>The lightest boat in the range, in film.</p>
+      <video class="lecteur" controls preload="metadata" poster="sillage4.png">
+        <source src="pub-sillage4.mp4" type="video/mp4">
+        <track kind="subtitles" src="pub-sillage4-en.vtt" srclang="en" label="English" default>
+      </video>
+      <p class="legende">Sillage 4 advert (French audio, English subtitles).</p>
+    </div>
+  </div>
+</section>
+
 <section class="bloc clair" id="authenticity">
   <div class="etiquette">One boatyard only</div>
   <h2 class="section">Check your hull in 30 seconds</h2>
@@ -379,12 +393,15 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
   <div class="etiquette">In pictures</div>
   <h2 class="section">Photo gallery</h2>
   <div class="galerie">
-    <figure><img src="galerie1.jpg" alt="Sillage 4 sailing in the bay" loading="lazy"></figure>
-    <figure><img src="galerie2.jpg" alt="Lombarde 5.5 at anchor near the coast" loading="lazy"></figure>
-    <figure><img src="galerie3.jpg" alt="Makaire 8 heading out to sea" loading="lazy"></figure>
-    <figure><img src="galerie4.jpg" alt="Boat under construction in the workshop" loading="lazy"></figure>
-    <figure><img src="galerie5.jpg" alt="Interior of the Lombarde 5.5 cabin" loading="lazy"></figure>
-    <figure><img src="galerie6.jpg" alt="Sun deck of the Makaire 8" loading="lazy"></figure>
+    <figure><div class="photo" role="img" aria-label="Sillage 4: teak benches in the cockpit" style="background-position:0.9% 0.9%"></div></figure>
+    <figure><div class="photo" role="img" aria-label="Sillage 4: helm station and steering wheel" style="background-position:51% 0.9%"></div></figure>
+    <figure><div class="photo" role="img" aria-label="Sillage 4: bow seating with storage" style="background-position:99% 0.9%"></div></figure>
+    <figure><div class="photo" role="img" aria-label="Lombarde 5.5: stern benches and platform" style="background-position:0.9% 49.4%"></div></figure>
+    <figure><div class="photo" role="img" aria-label="Lombarde 5.5: cabin with teak table" style="background-position:51% 49.4%"></div></figure>
+    <figure><div class="photo" role="img" aria-label="Lombarde 5.5: helm station and seat" style="background-position:99% 49.4%"></div></figure>
+    <figure><div class="photo" role="img" aria-label="Makaire 8: cockpit with teak benches and table" style="background-position:0.9% 99%"></div></figure>
+    <figure><div class="photo" role="img" aria-label="Makaire 8: panoramic cabin with dinette and helm" style="background-position:51% 99%"></div></figure>
+    <figure><div class="photo" role="img" aria-label="Makaire 8: sun deck on the bow" style="background-position:99% 99%"></div></figure>
   </div>
 </section>
 
@@ -392,21 +409,24 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
   <div class="etiquette">In the news</div>
   <h2 class="section">Press releases</h2>
   <div class="presse">
-    <article class="article">
-      <div class="source">Mediterranean Boating Review · 12 January 2027</div>
-      <h3>A new light fishing boat is born in St Mandrier</h3>
-      <p>Les bateaux de St Mandrier unveils the Sillage 4, a 4-metre boat weighing only 250 kg. Its very shallow draft lets anglers reach spots that larger boats cannot.</p>
-    </article>
-    <article class="article">
-      <div class="source">Var Coast Daily · 2 March 2027</div>
-      <h3>The Lombarde 5.5: a small cruiser for lakes, estuaries and the sea</h3>
-      <p>Easy to tow and equipped with a cabin for two, the Lombarde 5.5 is designed for relaxed outings. Options include an outboard motor or a mast.</p>
-    </article>
-    <article class="article">
-      <div class="source">Big Game &amp; Leisure Magazine · 20 May 2027</div>
-      <h3>Makaire 8: comfort and big-game fishing in one boat</h3>
-      <p>With two cabins, a helm station at the stern and a sun deck on the roof, the Makaire 8 is the boatyard's flagship. It can take up to two powerful engines.</p>
-    </article>
+    <a class="article" href="press-cap-large.pdf" target="_blank" rel="noopener">
+      <div class="source">Cap Large · 2 October 2026 · Road test</div>
+      <h3>Essai : Makaire 8, le 8 mètres qui fait aimer le mistral</h3>
+      <p>Un 8 mètres à cabine fermée, deux moteurs hors-bord et un pont en teck : le bateau des familles méditerranéennes qui veulent sortir toute l'année. Essayé un matin de mistral dans la rade de Toulon.</p>
+      <span class="lire">Read the article (PDF, in French) →</span>
+    </a>
+    <a class="article" href="press-horizon-mediterranee.pdf" target="_blank" rel="noopener">
+      <div class="source">Horizon Méditerranée · 26 September 2026 · Travel</div>
+      <h3>Une journée à bord du Makaire 8, de l'aube au coucher du soleil</h3>
+      <p>Pas de chronomètre ni de fiche technique : seulement la lumière, l'eau, et le temps qui passe autrement, entre les criques, le Faron et les îles d'Or.</p>
+      <span class="lire">Read the article (PDF, in French) →</span>
+    </a>
+    <a class="article" href="press-echo-de-la-rade.pdf" target="_blank" rel="noopener">
+      <div class="source">L'Écho de la Rade · 9 September 2026 · Economy</div>
+      <h3>Contrefaçon : le petit chantier de Saint-Mandrier qui tient tête à l'Asie</h3>
+      <p>Des coques vendues en Asie du Sud-Est sous son nom et son logo : la PME varoise a choisi de contre-attaquer et de transformer l'affaire en argument commercial.</p>
+      <span class="lire">Read the article (PDF, in French) →</span>
+    </a>
   </div>
 </section>
 
