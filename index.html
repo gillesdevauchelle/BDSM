@@ -86,6 +86,14 @@ h3{font-family:var(--titre);font-weight:600;font-size:1.3rem;line-height:1.2;mar
 .video-marque{margin-top:56px}
 video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre);box-shadow:0 20px 40px rgba(30,45,95,.18)}
 .legende{font-size:.88rem;color:var(--gris);margin-top:10px}
+.distinction{display:flex;align-items:center;gap:26px;margin-top:34px}
+.laureat{
+  flex:0 0 220px;width:220px;aspect-ratio:1;border-radius:50%;
+  background-color:#e8e0d5;background-image:url("laureat.png");background-repeat:no-repeat;
+  background-size:147.5% auto;background-position:50.5% 49.3%;
+}
+.distinction p{font-size:.97rem}
+.distinction b{color:var(--brun);font-weight:600}
 
 /* boats */
 .bateau{
@@ -117,7 +125,10 @@ video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre
 .fiche b{font-weight:600;color:var(--vert);margin-right:6px}
 
 /* commercial */
-.commercial{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.commercial{display:grid;grid-template-columns:repeat(2,1fr);gap:56px;align-items:start}
+.reel video.lecteur{width:min(100%,371px);aspect-ratio:9/16;height:auto;margin:0 auto;object-fit:contain}
+.reel .legende{text-align:center}
+.pub{grid-column:1/-1;width:100%;max-width:760px;justify-self:center}
 .affiche a{display:block}
 .affiche img{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 20px 40px rgba(30,45,95,.18);transition:transform .3s}
 .affiche a:hover img{transform:translateY(-3px)}
@@ -157,6 +168,10 @@ video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre
 .evenement{background:rgba(255,255,255,.6);border-radius:22px;padding:28px}
 .date{display:inline-block;background:var(--vert);color:var(--creme);font-weight:600;font-size:.85rem;padding:5px 14px;border-radius:999px;margin-bottom:14px}
 .lieu{font-weight:500;color:var(--brun);font-size:.95rem;margin-bottom:10px}
+.evenement .visuel{
+  width:100%;max-width:340px;aspect-ratio:963/1373;margin:0 auto 24px;border-radius:14px;
+  background-color:#f7f3ee;background-image:url("events.jpg");background-repeat:no-repeat;background-size:248% auto;
+}
 
 /* gallery */
 .galerie{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -236,6 +251,10 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
     <div>
       <p>Les bateaux de St Mandrier is a small boatyard based in St Mandrier sur Mer, in the south of France. We design and build three pleasure boats in our own workshop: a light fishing boat, a cosy cruiser and a comfortable big-game fishing boat.</p>
       <p>Our philosophy is simple: a good boat should be easy to use, honest in its construction and made to last. We build every boat by hand, close to the water it will sail on, and we take the time to help each customer choose the model that fits what they want to do on the water.</p>
+      <div class="distinction">
+        <div class="laureat" role="img" aria-label="Lauréat Prix Entreprise Féminine, La Garde 2026"></div>
+        <p><b>Award winner.</b> Laureate of the <b>Prix Entreprise Féminine</b>, La Garde 2026.</p>
+      </div>
     </div>
   </div>
 
@@ -326,14 +345,21 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
       </a>
       <p class="legende">Makaire 8 poster. Click to view it full size.</p>
     </div>
+    <div class="reel">
+      <h3>Reel / TikTok</h3>
+      <p>Our latest short video, made for social networks.</p>
+      <video class="lecteur" controls playsinline preload="metadata">
+        <source src="reel.mp4" type="video/mp4">
+      </video>
+      <p class="legende">Reel / TikTok (French audio)</p>
+    </div>
     <div class="pub">
       <h3>Sillage 4 advert</h3>
       <p>The lightest boat in the range, in film.</p>
       <video class="lecteur" controls preload="metadata" poster="sillage4.png">
         <source src="pub-sillage4.mp4" type="video/mp4">
-        <track kind="subtitles" src="pub-sillage4-en.vtt" srclang="en" label="English" default>
       </video>
-      <p class="legende">Sillage 4 advert (French audio, English subtitles).</p>
+      <p class="legende">Sillage 4 advert (French audio)</p>
     </div>
   </div>
 </section>
@@ -375,12 +401,14 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
   <h2 class="section">Events &amp; exhibitions</h2>
   <div class="evenements">
     <article class="evenement">
+      <div class="visuel" role="img" aria-label="Toulon Boat Show poster" style="background-position:11.8% 49.8%"></div>
       <span class="date">14–17 April 2027</span>
       <h3>Toulon Boat Show</h3>
       <div class="lieu">Port of Toulon, Var</div>
       <p>Our biggest trade event of the year. Come and see the Lombarde 5.5 and the Makaire 8 on display, talk to our builders and discover our latest options.</p>
     </article>
     <article class="evenement">
+      <div class="visuel" role="img" aria-label="St Mandrier Sea Festival poster" style="background-position:88.5% 49.8%"></div>
       <span class="date">3 July 2027</span>
       <h3>St Mandrier Sea Festival</h3>
       <div class="lieu">St Mandrier sur Mer</div>
@@ -414,6 +442,12 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
       <h3>Essai : Makaire 8, le 8 mètres qui fait aimer le mistral</h3>
       <p>Un 8 mètres à cabine fermée, deux moteurs hors-bord et un pont en teck : le bateau des familles méditerranéennes qui veulent sortir toute l'année. Essayé un matin de mistral dans la rade de Toulon.</p>
       <span class="lire">Read the article (PDF, in French) →</span>
+    </a>
+    <a class="article" href="press-communique-nouveau-cap.pdf" target="_blank" rel="noopener">
+      <div class="source">Official press release · Les Bateaux de Saint Mandrier · 26 September 2026</div>
+      <h3>Filière nautique : Les Bateaux de Saint Mandrier investissent 155 000 € pour anticiper les normes sanitaires et réinventer leur chantier</h3>
+      <p>Le programme « Nouveau Cap » déploie 155 000 € HT sur quatre trimestres : atelier nouvelle génération, bureaux modernisés et une journée « Chantier Ouvert » le 25 septembre 2027.</p>
+      <span class="lire">Read the press release (PDF, in French) →</span>
     </a>
     <a class="article" href="press-horizon-mediterranee.pdf" target="_blank" rel="noopener">
       <div class="source">Horizon Méditerranée · 26 September 2026 · Travel</div>
