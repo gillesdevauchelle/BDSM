@@ -86,12 +86,11 @@ h3{font-family:var(--titre);font-weight:600;font-size:1.3rem;line-height:1.2;mar
 .video-marque{margin-top:56px}
 video.lecteur{display:block;width:100%;border-radius:22px;background:var(--encre);box-shadow:0 20px 40px rgba(30,45,95,.18)}
 .legende{font-size:.88rem;color:var(--gris);margin-top:10px}
-.distinction{display:flex;align-items:center;gap:26px;margin-top:34px}
-.laureat{
-  flex:0 0 220px;width:220px;aspect-ratio:1;border-radius:50%;
-  background-color:#e8e0d5;background-image:url("laureat.png");background-repeat:no-repeat;
-  background-size:147.5% auto;background-position:50.5% 49.3%;
-}
+.distinctions{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 56px;margin-top:56px}
+.distinction{display:flex;align-items:center;gap:26px}
+.laureat,.certifie{flex:0 0 200px;width:200px;aspect-ratio:1;border-radius:50%;background-color:#e8e0d5;background-repeat:no-repeat}
+.laureat{background-image:url("laureat.png");background-size:147.5% auto;background-position:50.5% 49.3%}
+.certifie{background-image:url("certifie.png");background-size:115% auto;background-position:50.4% 50.4%}
 .distinction p{font-size:.97rem}
 .distinction b{color:var(--brun);font-weight:600}
 
@@ -202,7 +201,7 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
 
 @media(max-width:760px){
   .bloc{padding:70px 24px}
-  .apropos,.etapes,.commercial{grid-template-columns:1fr}
+  .apropos,.etapes,.commercial,.distinctions{grid-template-columns:1fr}
   .galerie{grid-template-columns:1fr 1fr}
   .bateau{grid-template-columns:1fr;gap:32px;padding:70px 24px}
 }
@@ -251,10 +250,17 @@ footer{text-align:center;padding:30px 24px 50px;color:rgba(243,247,251,.65);font
     <div>
       <p>Les bateaux de St Mandrier is a small boatyard based in St Mandrier sur Mer, in the south of France. We design and build three pleasure boats in our own workshop: a light fishing boat, a cosy cruiser and a comfortable big-game fishing boat.</p>
       <p>Our philosophy is simple: a good boat should be easy to use, honest in its construction and made to last. We build every boat by hand, close to the water it will sail on, and we take the time to help each customer choose the model that fits what they want to do on the water.</p>
-      <div class="distinction">
-        <div class="laureat" role="img" aria-label="Lauréat Prix Entreprise Féminine, La Garde 2026"></div>
-        <p><b>Award winner.</b> Laureate of the <b>Prix Entreprise Féminine</b>, La Garde 2026.</p>
-      </div>
+    </div>
+  </div>
+
+  <div class="distinctions">
+    <div class="distinction">
+      <div class="laureat" role="img" aria-label="Lauréat Prix Entreprise Féminine, La Garde 2026"></div>
+      <p><b>Award winner.</b> Laureate of the <b>Prix Entreprise Féminine</b>, La Garde 2026.</p>
+    </div>
+    <div class="distinction">
+      <div class="certifie" role="img" aria-label="Certifié Entreprise qui rayonne localement, La Garde 2026"></div>
+      <p><b>Certified.</b> <b>Entreprise qui rayonne localement</b> (a business that shines locally), La Garde 2026.</p>
     </div>
   </div>
 
